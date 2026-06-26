@@ -33,6 +33,36 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .demo-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 260ms ease;
+    }
+
+    .demo-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .demo-panel {
+      opacity: 0;
+      transform: translateY(18px) scale(0.9);
+      transform-origin: var(--origin-x, 50%) var(--origin-y, 50%);
+      transition: opacity 260ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .demo-backdrop.is-open .demo-panel {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .demo-backdrop,
+      .demo-panel {
+        transition: none;
+      }
+    }
   </style>
 </head>
 
@@ -231,7 +261,7 @@
           <a href="#kontakt" class="w-full mt-10 bg-black text-white py-4 rounded-2xl font-semibold hover:opacity-90 transition text-center">Telli veebileht</a>
         </div>
 
-        <div class="card rounded-[30px] p-8 flex flex-col">
+        <div class="card rounded-[30px] p-8 flex flex-col" id="ai-workflow-card">
           <div class="text-sm text-white/50 mb-3">Aja kokkuhoid</div>
           <div class="text-2xl font-bold">AI Workflow</div>
           <div class="text-5xl font-extrabold mt-6">€199+</div>
@@ -242,7 +272,10 @@
             <div>✓ AI vastuste või raportite abi</div>
             <div>✓ Make, Zapier või n8n loogika</div>
           </div>
-          <a href="#kontakt" class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Automatiseeri</a>
+          <button type="button" data-demo-trigger class="w-full mt-10 border border-white/15 py-4 rounded-2xl font-semibold hover:bg-white/10 transition text-center">
+            Vaata demo
+          </button>
+          <a href="#kontakt" class="w-full mt-3 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Automatiseeri</a>
         </div>
       </div>
 
@@ -261,6 +294,53 @@
       </div>
     </div>
   </section>
+
+  <div id="workflow-demo" class="demo-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/70 px-4 py-8 backdrop-blur-md" aria-hidden="true">
+    <div class="demo-panel w-full max-w-3xl rounded-[28px] border border-white/10 bg-[#090909] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-labelledby="workflow-demo-title">
+      <div class="flex items-start justify-between gap-6">
+        <div>
+          <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/60">Demo workflow</div>
+          <h2 id="workflow-demo-title" class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">Päringust automaatse follow-up'ini</h2>
+          <p class="mt-3 max-w-2xl text-white/60">Näide süsteemist, kus uus kliendipäring liigub ise õigesse kohta, saab prioriteedi ja käivitab personaalse vastuse.</p>
+        </div>
+        <button type="button" data-demo-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl leading-none text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Sulge demo">×</button>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-4">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div class="text-sm text-white/45">01</div>
+          <div class="mt-3 font-bold">Uus päring</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Kontaktivormist tuleb nimi, email, teenuse soov ja sõnum.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div class="text-sm text-white/45">02</div>
+          <div class="mt-3 font-bold">AI sorteerib</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">AI hindab, kas teema on SEO, veebiuuendus või workflow.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div class="text-sm text-white/45">03</div>
+          <div class="mt-3 font-bold">CRM/tabel</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Lead lisatakse Google Sheetsi, Notioni, Airtable'i või CRM-i.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+          <div class="text-sm text-white/45">04</div>
+          <div class="mt-3 font-bold">Follow-up</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Kliendile saadetakse automaatne, tema päringu põhjal koostatud vastus.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-3xl border border-white/10 bg-white text-black p-5 md:p-6">
+        <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div class="text-sm font-bold text-black/50">Näidisväljund</div>
+            <div class="mt-2 text-xl font-extrabold">"Klient soovib olemasoleva lehe uuendust + SEO põhja"</div>
+            <p class="mt-2 text-sm leading-relaxed text-black/60">Prioriteet: keskmine · Pakett: Veebiuuendus €249+ · Järgmine samm: küsi ligipääs ja praeguse lehe URL.</p>
+          </div>
+          <a href="#kontakt" data-demo-close class="rounded-2xl bg-black px-6 py-4 text-center font-semibold text-white transition hover:opacity-90">Soovin sellist</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section id="protsess" class="py-28">
     <div class="max-w-7xl mx-auto px-6">
@@ -303,6 +383,45 @@
       </div>
     </div>
   </section>
+
+  <script>
+    const demo = document.getElementById('workflow-demo');
+    const demoTrigger = document.querySelector('[data-demo-trigger]');
+    const closeButtons = document.querySelectorAll('[data-demo-close]');
+
+    function openDemo(event) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      demo.style.setProperty('--origin-x', `${originX}px`);
+      demo.style.setProperty('--origin-y', `${originY}px`);
+      demo.classList.add('is-open');
+      demo.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDemo() {
+      demo.classList.remove('is-open');
+      demo.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    demoTrigger.addEventListener('click', openDemo);
+    closeButtons.forEach((button) => button.addEventListener('click', closeDemo));
+
+    demo.addEventListener('click', (event) => {
+      if (event.target === demo) {
+        closeDemo();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && demo.classList.contains('is-open')) {
+        closeDemo();
+      }
+    });
+  </script>
 
 </body>
 </html>
