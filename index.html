@@ -9,40 +9,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background: #050505; overflow-x: hidden; }
-    .glow { background: radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 70%); }
-    .card { background: rgba(255,255,255,0.04); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
-    .gradient-text { background: linear-gradient(to right, white, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .modal-backdrop { opacity: 0; pointer-events: none; transition: opacity 260ms ease; }
-    .modal-backdrop.is-open { opacity: 1; pointer-events: auto; }
-    .modal-panel { max-height: calc(100vh - 48px); overflow-y: auto; opacity: 0; transform: translateY(18px) scale(0.92); transform-origin: var(--origin-x, 50%) var(--origin-y, 50%); transition: opacity 260ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1); }
-    .modal-backdrop.is-open .modal-panel { opacity: 1; transform: translateY(0) scale(1); }
-    .mock-window { overflow: hidden; border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; background: linear-gradient(135deg, rgba(13,22,42,0.98), rgba(4,8,17,0.98)); box-shadow: 0 24px 80px rgba(0,0,0,0.35); }
-    .mock-titlebar { display: flex; gap: 6px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); }
-    .mock-dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,0.28); }
-    .field-line { border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); padding: 14px 16px; font-size: 13px; }
-    .admin-grid { display: grid; grid-template-columns: 0.7fr 1fr 0.7fr 1.4fr 0.9fr; gap: 12px; align-items: center; min-width: 760px; }
-    .blurred-data { display: inline-block; min-width: 86px; height: 11px; border-radius: 999px; background: rgba(226,232,240,0.22); filter: blur(3px); }
-    @media (prefers-reduced-motion: reduce) { .modal-backdrop, .modal-panel { transition: none; } }
+    body{font-family:Inter,sans-serif;background:#050505;overflow-x:hidden}.glow{background:radial-gradient(circle at center,rgba(255,255,255,.12),transparent 70%)}.card{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}.gradient-text{background:linear-gradient(to right,#fff,#888);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.modal-backdrop{opacity:0;pointer-events:none;transition:opacity .26s ease}.modal-backdrop.is-open{opacity:1;pointer-events:auto}.modal-panel{max-height:calc(100vh - 48px);overflow-y:auto;opacity:0;transform:translateY(18px) scale(.92);transform-origin:var(--origin-x,50%) var(--origin-y,50%);transition:opacity .26s ease,transform .32s cubic-bezier(.16,1,.3,1)}.modal-backdrop.is-open .modal-panel{opacity:1;transform:translateY(0) scale(1)}.mock-window{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:linear-gradient(135deg,rgba(13,22,42,.98),rgba(4,8,17,.98));box-shadow:0 24px 80px rgba(0,0,0,.35)}.mock-titlebar{display:flex;gap:6px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}.mock-dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.28)}.field-line{border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);padding:14px 16px;font-size:13px}.admin-grid{display:grid;grid-template-columns:.7fr 1fr .7fr 1.4fr .9fr;gap:12px;align-items:center;min-width:760px}.blurred-data{display:inline-block;min-width:86px;height:11px;border-radius:999px;background:rgba(226,232,240,.22);filter:blur(3px)}@media(prefers-reduced-motion:reduce){.modal-backdrop,.modal-panel{transition:none}}
   </style>
 </head>
 <body class="text-white">
-  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between gap-5">
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2">
-          <a href="#" class="rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/70 transition hover:bg-white/10 hover:text-white">Logi sisse</a>
-          <a href="#" class="rounded-xl bg-white px-3 py-2 text-xs font-semibold text-black transition hover:scale-105">Registreeri</a>
-        </div>
-        <a href="#" class="hidden text-2xl font-bold tracking-tight sm:block">FlowSync</a>
-      </div>
+  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-5">
+      <a href="./" class="text-2xl font-bold tracking-tight">FlowSync</a>
       <div class="hidden md:flex items-center gap-8 text-sm text-white/70">
-        <a href="#teenused" class="hover:text-white transition">Teenused</a>
-        <a href="#hinnad" class="hover:text-white transition">Hinnad</a>
-        <a href="#protsess" class="hover:text-white transition">Protsess</a>
-        <a href="#kontakt" class="hover:text-white transition">Kontakt</a>
+        <a href="#teenused" class="hover:text-white transition">Teenused</a><a href="#hinnad" class="hover:text-white transition">Hinnad</a><a href="#protsess" class="hover:text-white transition">Protsess</a><a href="#kontakt" class="hover:text-white transition">Kontakt</a>
       </div>
-      <a href="#kontakt" class="bg-white text-black px-5 py-2 rounded-xl font-semibold hover:scale-105 transition">Küsi pakkumist</a>
+      <div class="flex items-center gap-2">
+        <a href="./login/" class="rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/75 transition hover:bg-white/10 hover:text-white sm:px-4 sm:text-sm">Logi sisse</a>
+        <a href="./register/" class="rounded-xl bg-white px-3 py-2 text-xs font-semibold text-black transition hover:scale-105 sm:px-4 sm:text-sm">Registreeri</a>
+      </div>
     </div>
   </nav>
 
@@ -53,237 +33,36 @@
         <div class="inline-flex items-center px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70 mb-8">Veebiarendus + SEO + AI automaatika</div>
         <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">Veebileht, mis näeb hea välja <span class="gradient-text block">ja toob päringuid.</span></h1>
         <p class="mt-8 text-lg text-white/60 leading-relaxed max-w-xl">Loome väikestele ettevõtetele modernseid veebilehti, parandame olemasolevaid kodulehti, ehitame SEO põhja ning lisame AI workflow'd, mis vähendavad käsitööd ja aitavad klientidega kiiremini tegeleda.</p>
-        <div class="flex flex-col sm:flex-row gap-4 mt-10">
-          <a href="#hinnad" class="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Vaata pakette</a>
-          <a href="#kontakt" class="border border-white/10 px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition text-center">Räägime ideest</a>
-        </div>
-        <div class="grid grid-cols-3 gap-6 mt-14 max-w-xl">
-          <div><div class="text-3xl font-bold">48h</div><div class="text-white/50 mt-1 text-sm">esmane plaan</div></div>
-          <div><div class="text-3xl font-bold">€149+</div><div class="text-white/50 mt-1 text-sm">SEO algus</div></div>
-          <div><div class="text-3xl font-bold">€249+</div><div class="text-white/50 mt-1 text-sm">veebiuuendus</div></div>
-        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-10"><a href="#hinnad" class="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Vaata pakette</a><a href="#kontakt" class="border border-white/10 px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition text-center">Räägime ideest</a></div>
+        <div class="grid grid-cols-3 gap-6 mt-14 max-w-xl"><div><div class="text-3xl font-bold">48h</div><div class="text-white/50 mt-1 text-sm">esmane plaan</div></div><div><div class="text-3xl font-bold">€149+</div><div class="text-white/50 mt-1 text-sm">SEO algus</div></div><div><div class="text-3xl font-bold">€249+</div><div class="text-white/50 mt-1 text-sm">veebiuuendus</div></div></div>
       </div>
-      <div class="relative">
-        <div class="card rounded-[30px] p-8 shadow-2xl">
-          <div class="flex items-center gap-2 mb-8"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
-          <div class="space-y-5">
-            <div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">1. Veebileht korda</div><div class="font-semibold">Selge struktuur, kaasaegne disain ja mobiilivaade.</div></div>
-            <div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">2. SEO põhi peale</div><div class="font-semibold">Pealkirjad, meta kirjeldused, kiirus ja otsingus nähtav sisu.</div></div>
-            <div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">3. AI workflow tööle</div><div class="font-semibold">Päringud, emailid ja kliendiinfo liiguvad automaatselt õigesse kohta.</div><div class="w-full bg-white/10 rounded-full h-3 mt-4"><div class="bg-white h-3 rounded-full w-4/5"></div></div><div class="text-sm text-white/50 mt-3">80% korduvast käsitööst vähem</div></div>
-          </div>
-        </div>
+      <div class="card rounded-[30px] p-8 shadow-2xl">
+        <div class="flex items-center gap-2 mb-8"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
+        <div class="space-y-5"><div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">1. Veebileht korda</div><div class="font-semibold">Selge struktuur, kaasaegne disain ja mobiilivaade.</div></div><div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">2. SEO põhi peale</div><div class="font-semibold">Pealkirjad, meta kirjeldused, kiirus ja otsingus nähtav sisu.</div></div><div class="card rounded-2xl p-5"><div class="text-sm text-white/50 mb-2">3. AI workflow tööle</div><div class="font-semibold">Päringud, emailid ja kliendiinfo liiguvad automaatselt õigesse kohta.</div><div class="w-full bg-white/10 rounded-full h-3 mt-4"><div class="bg-white h-3 rounded-full w-4/5"></div></div><div class="text-sm text-white/50 mt-3">80% korduvast käsitööst vähem</div></div></div>
       </div>
     </div>
   </section>
 
-  <section id="teenused" class="py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <h2 class="text-5xl font-bold tracking-tight">Mida pakume?</h2>
-        <p class="text-white/60 mt-6 text-lg max-w-2xl mx-auto">Praktilised digiteenused ettevõttele, kes tahab paremat veebilehte, rohkem päringuid ja vähem käsitööd.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">SEO arendus</h3><p class="text-white/60 leading-relaxed">Tehniline SEO, meta pealkirjad, sisutekstide parandamine, kiiruse kontroll ja Google Search Console seadistus.</p></div>
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Veebiarendus enda stiili järgi</h3><p class="text-white/60 leading-relaxed">Uus leht sinu brändi, värvide ja soovitud stiili järgi. Sobib teenusepakkujale, väikeettevõttele või personaalsele brändile.</p></div>
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Olemasoleva lehe uuendamine</h3><p class="text-white/60 leading-relaxed">Odavam viis vana koduleht värskemaks teha: parem paigutus, CTA-d, tekstid, mobiilivaade ja SEO põhi.</p></div>
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">AI workflow'd</h3><p class="text-white/60 leading-relaxed">Automaatne päringute sorteerimine, CRM või Google Sheets ühendused, email follow-up'id ja AI abiga vastused.</p></div>
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Landing page kampaaniaks</h3><p class="text-white/60 leading-relaxed">Üks konkreetne müügileht reklaami, teenuse või hooajalise pakkumise jaoks, kus fookus on päringu saamisel.</p></div>
-        <div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Hooldus ja edasiarendus</h3><p class="text-white/60 leading-relaxed">Igakuised parandused, uued sektsioonid, SEO jälgimine, väiksemad automaatikad ja tehniline tugi.</p></div>
-      </div>
-    </div>
-  </section>
+  <section id="teenused" class="py-28"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-20"><h2 class="text-5xl font-bold tracking-tight">Mida pakume?</h2><p class="text-white/60 mt-6 text-lg max-w-2xl mx-auto">Praktilised digiteenused ettevõttele, kes tahab paremat veebilehte, rohkem päringuid ja vähem käsitööd.</p></div><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">SEO arendus</h3><p class="text-white/60 leading-relaxed">Tehniline SEO, meta pealkirjad, sisutekstide parandamine, kiiruse kontroll ja Google Search Console seadistus.</p></div><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Veebiarendus enda stiili järgi</h3><p class="text-white/60 leading-relaxed">Uus leht sinu brändi, värvide ja soovitud stiili järgi.</p></div><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Olemasoleva lehe uuendamine</h3><p class="text-white/60 leading-relaxed">Odavam viis vana koduleht värskemaks teha: parem paigutus, CTA-d, tekstid, mobiilivaade ja SEO põhi.</p></div><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">AI workflow'd</h3><p class="text-white/60 leading-relaxed">Automaatne päringute sorteerimine, CRM või Google Sheets ühendused, email follow-up'id ja AI abiga vastused.</p></div><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Landing page kampaaniaks</h3><p class="text-white/60 leading-relaxed">Üks konkreetne müügileht reklaami, teenuse või hooajalise pakkumise jaoks.</p></div><div class="card rounded-3xl p-8"><h3 class="text-2xl font-semibold mb-4">Hooldus ja edasiarendus</h3><p class="text-white/60 leading-relaxed">Igakuised parandused, uued sektsioonid, SEO jälgimine, väiksemad automaatikad ja tehniline tugi.</p></div></div></div></section>
 
-  <section id="hinnad" class="py-28 bg-white/[0.02] border-y border-white/10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <h2 class="text-5xl font-bold tracking-tight">Konkurentsivõimelised paketid</h2>
-        <p class="text-white/60 mt-6 text-lg max-w-2xl mx-auto">Hinnad on tehtud alustavale ja kasvavale ettevõttele arusaadavaks. Täpne pakkumine sõltub lehe mahust ja integratsioonidest.</p>
-      </div>
-      <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
-        <div class="card rounded-[30px] p-8 flex flex-col">
-          <div class="text-sm text-white/50 mb-3">Kiire nähtavus</div>
-          <div class="text-2xl font-bold">SEO Start</div>
-          <div class="text-5xl font-extrabold mt-6">€149</div>
-          <div class="text-white/50 mt-2">ühekordne töö</div>
-          <div class="space-y-4 mt-10 text-white/70 flex-1">
-            <div>✓ SEO audit ja plaan</div><div>✓ Meta pealkirjad ja kirjeldused</div><div>✓ Lehe kiiruse soovitused</div><div>✓ Google Search Console juhend</div>
-          </div>
-          <button type="button" data-package-trigger data-package="seo" class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Vali SEO</button>
-        </div>
-        <div class="card rounded-[30px] p-8 flex flex-col">
-          <div class="text-sm text-white/50 mb-3">Soodsaim veebitöö</div><div class="text-2xl font-bold">Veebiuuendus</div><div class="text-5xl font-extrabold mt-6">€249+</div><div class="text-white/50 mt-2">olemasolevale lehele</div>
-          <div class="space-y-4 mt-10 text-white/70 flex-1"><div>✓ Disaini värskendus</div><div>✓ Tekstid ja CTA-d paremaks</div><div>✓ Mobiilivaate korrastus</div><div>✓ SEO põhiseadistus</div></div>
-          <a href="#kontakt" class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Uuenda lehte</a>
-        </div>
-        <div class="bg-white text-black rounded-[30px] p-8 scale-105 shadow-2xl flex flex-col">
-          <div class="text-sm text-black/60 mb-3">Populaarne valik</div><div class="text-2xl font-bold">Uus veebileht</div><div class="text-5xl font-extrabold mt-6">€499+</div><div class="text-black/60 mt-2">enda stiili järgi</div>
-          <div class="space-y-4 mt-10 flex-1"><div>✓ Avaleht või landing page</div><div>✓ Brändi järgi kujundus</div><div>✓ Kontaktivorm või broneerimisnupp</div><div>✓ SEO ja mobiilivaade</div><div>✓ GitHub Pages või muu avaldamine</div></div>
-          <a href="#kontakt" class="w-full mt-10 bg-black text-white py-4 rounded-2xl font-semibold hover:opacity-90 transition text-center">Telli veebileht</a>
-        </div>
-        <div class="card rounded-[30px] p-8 flex flex-col" id="ai-workflow-card">
-          <div class="text-sm text-white/50 mb-3">Aja kokkuhoid</div><div class="text-2xl font-bold">AI Workflow</div><div class="text-5xl font-extrabold mt-6">€199+</div><div class="text-white/50 mt-2">1 automaatika</div>
-          <div class="space-y-4 mt-10 text-white/70 flex-1"><div>✓ Päringud CRM-i või tabelisse</div><div>✓ Automaatne emaili follow-up</div><div>✓ AI vastuste või raportite abi</div><div>✓ Make, Zapier või n8n loogika</div></div>
-          <button type="button" data-demo-trigger class="w-full mt-10 border border-white/15 py-4 rounded-2xl font-semibold hover:bg-white/10 transition text-center">Vaata demo</button>
-          <a href="#kontakt" class="w-full mt-3 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Automatiseeri</a>
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6 mt-6">
-        <div class="card rounded-[30px] p-8"><div class="text-2xl font-bold">Hoolduspakett</div><p class="text-white/60 mt-4 leading-relaxed">Väiksemad muudatused, tehniline tugi, SEO jälgimine ja lehe korrashoid.</p><div class="text-4xl font-extrabold mt-6">€49 / kuu</div></div>
-        <div class="card rounded-[30px] p-8"><div class="text-2xl font-bold">Custom lahendus</div><p class="text-white/60 mt-4 leading-relaxed">Mitmeleheline veeb, keerukam SEO, e-pood, broneeringud, CRM või mitu AI workflow'd ühes süsteemis.</p><div class="text-4xl font-extrabold mt-6">kokkuleppel</div></div>
-      </div>
-    </div>
-  </section>
+  <section id="hinnad" class="py-28 bg-white/[0.02] border-y border-white/10"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-20"><h2 class="text-5xl font-bold tracking-tight">Konkurentsivõimelised paketid</h2><p class="text-white/60 mt-6 text-lg max-w-2xl mx-auto">Hinnad on tehtud alustavale ja kasvavale ettevõttele arusaadavaks.</p></div><div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6"><div class="card rounded-[30px] p-8 flex flex-col"><div class="text-sm text-white/50 mb-3">Kiire nähtavus</div><div class="text-2xl font-bold">SEO Start</div><div class="text-5xl font-extrabold mt-6">€149</div><div class="text-white/50 mt-2">ühekordne töö</div><div class="space-y-4 mt-10 text-white/70 flex-1"><div>✓ SEO audit ja plaan</div><div>✓ Meta pealkirjad ja kirjeldused</div><div>✓ Lehe kiiruse soovitused</div><div>✓ Google Search Console juhend</div></div><button type="button" data-package-trigger class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Vali SEO</button></div><div class="card rounded-[30px] p-8 flex flex-col"><div class="text-sm text-white/50 mb-3">Soodsaim veebitöö</div><div class="text-2xl font-bold">Veebiuuendus</div><div class="text-5xl font-extrabold mt-6">€249+</div><div class="text-white/50 mt-2">olemasolevale lehele</div><div class="space-y-4 mt-10 text-white/70 flex-1"><div>✓ Disaini värskendus</div><div>✓ Tekstid ja CTA-d paremaks</div><div>✓ Mobiilivaate korrastus</div><div>✓ SEO põhiseadistus</div></div><a href="#kontakt" class="w-full mt-10 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Uuenda lehte</a></div><div class="bg-white text-black rounded-[30px] p-8 scale-105 shadow-2xl flex flex-col"><div class="text-sm text-black/60 mb-3">Populaarne valik</div><div class="text-2xl font-bold">Uus veebileht</div><div class="text-5xl font-extrabold mt-6">€499+</div><div class="text-black/60 mt-2">enda stiili järgi</div><div class="space-y-4 mt-10 flex-1"><div>✓ Avaleht või landing page</div><div>✓ Brändi järgi kujundus</div><div>✓ Kontaktivorm või broneerimisnupp</div><div>✓ SEO ja mobiilivaade</div><div>✓ GitHub Pages või muu avaldamine</div></div><a href="#kontakt" class="w-full mt-10 bg-black text-white py-4 rounded-2xl font-semibold hover:opacity-90 transition text-center">Telli veebileht</a></div><div class="card rounded-[30px] p-8 flex flex-col" id="ai-workflow-card"><div class="text-sm text-white/50 mb-3">Aja kokkuhoid</div><div class="text-2xl font-bold">AI Workflow</div><div class="text-5xl font-extrabold mt-6">€199+</div><div class="text-white/50 mt-2">1 automaatika</div><div class="space-y-4 mt-10 text-white/70 flex-1"><div>✓ Päringud CRM-i või tabelisse</div><div>✓ Automaatne emaili follow-up</div><div>✓ AI vastuste või raportite abi</div><div>✓ Make, Zapier või n8n loogika</div></div><button type="button" data-demo-trigger class="w-full mt-10 border border-white/15 py-4 rounded-2xl font-semibold hover:bg-white/10 transition text-center">Vaata demo</button><a href="#kontakt" class="w-full mt-3 bg-white text-black py-4 rounded-2xl font-semibold hover:scale-105 transition text-center">Automatiseeri</a></div></div><div class="grid md:grid-cols-2 gap-6 mt-6"><div class="card rounded-[30px] p-8"><div class="text-2xl font-bold">Hoolduspakett</div><p class="text-white/60 mt-4 leading-relaxed">Väiksemad muudatused, tehniline tugi, SEO jälgimine ja lehe korrashoid.</p><div class="text-4xl font-extrabold mt-6">€49 / kuu</div></div><div class="card rounded-[30px] p-8"><div class="text-2xl font-bold">Custom lahendus</div><p class="text-white/60 mt-4 leading-relaxed">Mitmeleheline veeb, keerukam SEO, e-pood, broneeringud, CRM või mitu AI workflow'd ühes süsteemis.</p><div class="text-4xl font-extrabold mt-6">kokkuleppel</div></div></div></div></section>
 
-  <div id="package-modal" class="modal-backdrop fixed inset-0 z-[110] grid place-items-center bg-black/75 px-4 py-6 backdrop-blur-md" aria-hidden="true">
-    <div class="modal-panel w-full max-w-3xl rounded-[28px] border border-white/10 bg-[#070b14] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-labelledby="package-title">
-      <div class="flex items-start justify-between gap-6">
-        <div>
-          <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100">Koosta pakett</div>
-          <h2 id="package-title" class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">SEO Start</h2>
-          <p class="mt-3 max-w-2xl text-white/60">Vali põhipaketile lisaks teenused, mida tahad kohe juurde võtta. Kogusumma muutub automaatselt.</p>
-        </div>
-        <button type="button" data-package-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl leading-none text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Sulge paketi valik">×</button>
-      </div>
+  <div id="package-modal" class="modal-backdrop fixed inset-0 z-[110] grid place-items-center bg-black/75 px-4 py-6 backdrop-blur-md" aria-hidden="true"><div class="modal-panel w-full max-w-3xl rounded-[28px] border border-white/10 bg-[#070b14] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true"><div class="flex items-start justify-between gap-6"><div><div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100">Koosta pakett</div><h2 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">SEO Start</h2><p class="mt-3 max-w-2xl text-white/60">Vali põhipaketile lisaks teenused. Kogusumma muutub automaatselt.</p></div><button type="button" data-package-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl text-white/70 transition hover:bg-white/10">×</button></div><div class="mt-8 rounded-3xl border border-white/10 bg-white/[0.04] p-5 flex items-center justify-between gap-4"><div><div class="font-bold">Põhipakett: SEO Start</div><div class="mt-1 text-sm text-white/50">Audit, meta pealkirjad, kiiruse soovitused ja Search Console juhend.</div></div><div class="text-2xl font-extrabold">€149</div></div><div class="mt-5 space-y-3" id="seo-options"></div><div class="mt-6 rounded-3xl border border-cyan-300/15 bg-cyan-300/10 p-5"><div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><div class="text-sm font-bold text-cyan-100/60">Kogusumma</div><div class="mt-1 text-4xl font-extrabold" id="seo-total">€149</div><div class="mt-2 text-sm text-white/55" id="seo-selected">Lisavalikuid pole valitud.</div></div><a id="seo-request-link" href="mailto:info@flowsync.ee?subject=Soovin%20SEO%20Start%20paketti" class="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-slate-950 transition hover:opacity-90">Saada valik</a></div></div></div></div>
 
-      <div class="mt-8 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <div class="font-bold">Põhipakett: SEO Start</div>
-            <div class="mt-1 text-sm text-white/50">Audit, meta pealkirjad, kiiruse soovitused ja Search Console juhend.</div>
-          </div>
-          <div class="text-2xl font-extrabold">€149</div>
-        </div>
-      </div>
+  <div id="workflow-demo" class="modal-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/75 px-4 py-6 backdrop-blur-md" aria-hidden="true"><div class="modal-panel w-full max-w-6xl rounded-[28px] border border-white/10 bg-[#050913] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true"><div class="flex items-start justify-between gap-6"><div><div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100">AI workflow demo</div><h2 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">Päringust admin-paneeli ja automaatse emailini</h2><p class="mt-3 max-w-3xl text-white/60">Näide ehitusettevõtte töövoost: klient saadab hinnapäringu, päring jõuab admin-paneeli, AI märgib töö tüübi ning klient saab automaatse kinnituse.</p></div><button type="button" data-demo-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl text-white/70 transition hover:bg-white/10">×</button></div><div class="mt-8 grid gap-4 md:grid-cols-4"><div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">01</div><div class="mt-3 font-bold">Klient saadab päringu</div><p class="mt-2 text-sm text-white/55">Vormist tulevad kontakt, aadress, sõnum ja failid.</p></div><div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">02</div><div class="mt-3 font-bold">Admin näeb uut tööd</div><p class="mt-2 text-sm text-white/55">Päring lisatakse tumedasse kliendipaneeli.</p></div><div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">03</div><div class="mt-3 font-bold">AI teeb eeltöö</div><p class="mt-2 text-sm text-white/55">AI tuvastab töö tüübi ja järgmise sammu.</p></div><div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">04</div><div class="mt-3 font-bold">Follow-up email</div><p class="mt-2 text-sm text-white/55">Klient saab automaatse kinnituse.</p></div></div><div class="mt-8 grid gap-5 lg:grid-cols-2"><div class="mock-window"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="p-6"><div class="text-center text-xl font-extrabold tracking-wide">SAADA PÄRING</div><div class="mt-6 grid gap-3 sm:grid-cols-2"><div class="field-line">Nimi</div><div class="field-line">Email</div><div class="field-line">Telefon</div><div class="field-line">Aadress</div></div><div class="field-line mt-3 h-28">Kirjelda oma projekti...</div><div class="mt-5 flex gap-3 justify-center"><div class="rounded-xl bg-orange-500 px-8 py-3 text-sm font-bold text-white">SAADA SÕNUM</div><div class="rounded-xl border-2 border-white/80 px-6 py-3 text-sm font-bold text-white">VALI FAILID</div></div></div></div><div class="mock-window"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="bg-[#07101f] p-5"><div class="text-2xl font-extrabold">Päringud</div><div class="text-sm text-white/45">Demoandmed anonüümitud</div><div class="mt-5 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]"><div class="admin-grid px-4 py-4 text-sm text-white/75"><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">ID #46</div></div><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">andmed peidetud</div></div><div>Hane 2a</div><div>Hinnapäring siseviimistluse töödele.</div><div><span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-200">Kohtumine: 14:30</span></div></div></div></div></div></div><div class="mock-window mt-5"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="bg-slate-100 p-5 text-slate-950"><div class="rounded-3xl bg-white p-5 shadow-xl"><div class="text-xs font-bold uppercase tracking-wide text-slate-400">Automaatne follow-up</div><div class="mt-1 text-xl font-extrabold">Hinnapäring kinnitatud - kohtumine kokku lepitud</div><div class="mt-4 text-sm text-slate-500">Tamm Ehitus &lt;info@tammehitus.ee&gt; → klient@email.ee</div><div class="mt-5 leading-relaxed text-slate-700"><p>Aitäh hinnapäringu eest. Broneerisime kohtumise objekti ülevaatamiseks.</p><div class="mt-4 rounded-2xl bg-slate-950 p-4 text-white"><div class="text-xs font-bold uppercase tracking-wide text-cyan-200/70">Kokkulepitud kohtumisaeg</div><div class="mt-2 text-2xl font-extrabold">Hane 2a, Tallinn · kell 14:30</div></div></div></div></div></div><div class="mt-6 rounded-3xl border border-cyan-300/15 bg-cyan-300/10 p-5 md:p-6 flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><div class="text-sm font-bold text-cyan-100/60">Näidisväljund</div><div class="mt-2 text-xl font-extrabold">"Klient esitas hinnapäringu ja sai automaatse kinnituse"</div><p class="mt-2 text-sm text-white/60">AI töövoog: vorm → admin-paneel → kinnitusemail → meeldetuletus.</p></div><a href="#kontakt" data-demo-close class="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-slate-950 transition hover:opacity-90">Soovin sellist</a></div></div></div>
 
-      <div class="mt-5 space-y-3" id="seo-options">
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="49" data-name="Märksõnade süvaanalüüs"><span><span class="block font-semibold">Märksõnade süvaanalüüs</span><span class="mt-1 block text-sm text-white/50">Leiame otsingud, mille järgi kliendid sinu teenust otsivad.</span></span></span><span class="font-bold text-cyan-100">+€49</span>
-        </label>
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="79" data-name="3 SEO sisuteksti parandust"><span><span class="block font-semibold">3 SEO sisuteksti parandust</span><span class="mt-1 block text-sm text-white/50">Parandame kuni kolm olulist teenuse või avalehe tekstiplokki.</span></span></span><span class="font-bold text-cyan-100">+€79</span>
-        </label>
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="69" data-name="Kiiruse optimeerimine"><span><span class="block font-semibold">Kiiruse optimeerimine</span><span class="mt-1 block text-sm text-white/50">Piltide, laadimise ja tehnilise baasi korrastus kiirema lehe jaoks.</span></span></span><span class="font-bold text-cyan-100">+€69</span>
-        </label>
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="59" data-name="Google Business Profile põhi"><span><span class="block font-semibold">Google Business Profile põhi</span><span class="mt-1 block text-sm text-white/50">Sobib kohalikele ettevõtetele, kes tahavad Google Mapsis paremini välja paista.</span></span></span><span class="font-bold text-cyan-100">+€59</span>
-        </label>
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="49" data-name="Schema markup"><span><span class="block font-semibold">Schema markup</span><span class="mt-1 block text-sm text-white/50">Lisame otsingumootoritele selgema ettevõtte ja teenuse struktuuri.</span></span></span><span class="font-bold text-cyan-100">+€49</span>
-        </label>
-        <label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]">
-          <span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="39" data-name="30 päeva SEO jälgimine"><span><span class="block font-semibold">30 päeva SEO jälgimine</span><span class="mt-1 block text-sm text-white/50">Vaatame kuu jooksul, kas indeks, vead ja esimesed signaalid liiguvad õigesti.</span></span></span><span class="font-bold text-cyan-100">+€39</span>
-        </label>
-      </div>
-
-      <div class="mt-6 rounded-3xl border border-cyan-300/15 bg-cyan-300/10 p-5">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div class="text-sm font-bold text-cyan-100/60">Kogusumma</div>
-            <div class="mt-1 text-4xl font-extrabold" id="seo-total">€149</div>
-            <div class="mt-2 text-sm text-white/55" id="seo-selected">Lisavalikuid pole valitud.</div>
-          </div>
-          <a id="seo-request-link" href="mailto:info@flowsync.ee?subject=Soovin%20SEO%20Start%20paketti" class="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-slate-950 transition hover:opacity-90">Saada valik</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="workflow-demo" class="modal-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/75 px-4 py-6 backdrop-blur-md" aria-hidden="true">
-    <div class="modal-panel w-full max-w-6xl rounded-[28px] border border-white/10 bg-[#050913] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-labelledby="workflow-demo-title">
-      <div class="flex items-start justify-between gap-6">
-        <div>
-          <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100">AI workflow demo</div>
-          <h2 id="workflow-demo-title" class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">Päringust admin-paneeli ja automaatse emailini</h2>
-          <p class="mt-3 max-w-3xl text-white/60">Näide ehitusettevõtte töövoost: klient saadab hinnapäringu, päring jõuab admin-paneeli, AI märgib töö tüübi ning klient saab automaatse kinnituse kokkulepitud kohtumisajaga.</p>
-        </div>
-        <button type="button" data-demo-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl leading-none text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Sulge demo">×</button>
-      </div>
-      <div class="mt-8 grid gap-4 md:grid-cols-4">
-        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">01</div><div class="mt-3 font-bold">Klient saadab päringu</div><p class="mt-2 text-sm leading-relaxed text-white/55">Vormist tulevad nimi, kontakt, aadress, sõnum ja failid.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">02</div><div class="mt-3 font-bold">Admin näeb uut tööd</div><p class="mt-2 text-sm leading-relaxed text-white/55">Päring lisatakse tumedasse kliendipaneeli anonüümse vaatega.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">03</div><div class="mt-3 font-bold">AI teeb eeltöö</div><p class="mt-2 text-sm leading-relaxed text-white/55">AI tuvastab töö tüübi, kiireloomulisuse ja järgmise sammu.</p></div>
-        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4"><div class="text-sm text-cyan-100/45">04</div><div class="mt-3 font-bold">Follow-up email</div><p class="mt-2 text-sm leading-relaxed text-white/55">Klient saab automaatse kinnituse ja kohtumise detailid.</p></div>
-      </div>
-      <div class="mt-8 grid gap-5 lg:grid-cols-2">
-        <div class="mock-window"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="p-6"><div class="text-center text-xl font-extrabold tracking-wide">SAADA PÄRING</div><div class="mt-6 grid gap-3 sm:grid-cols-2"><div class="field-line">Nimi</div><div class="field-line">Email</div><div class="field-line">Telefon</div><div class="field-line">Aadress</div></div><div class="field-line mt-3 h-28">Kirjelda oma projekti...</div><div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"><div class="rounded-xl bg-orange-500 px-12 py-3 text-center text-sm font-bold text-white">SAADA SÕNUM</div><div class="rounded-xl border-2 border-white/80 px-8 py-3 text-center text-sm font-bold text-white">VALI FAILID</div></div></div></div>
-        <div class="mock-window"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="grid min-h-[310px] place-items-center bg-slate-950 p-6"><div class="w-full max-w-sm rounded-3xl border border-white/10 bg-white/[0.06] p-7 shadow-2xl"><div class="text-center text-2xl font-extrabold">Admin login</div><div class="field-line mt-6">kasutaja</div><div class="field-line mt-3">••••••••••••••••</div><div class="mt-5 rounded-xl bg-white px-5 py-3 text-center text-sm font-bold text-slate-950">Logi sisse</div></div></div></div>
-      </div>
-      <div class="mock-window mt-5"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="bg-[#07101f] p-5"><div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><div class="text-2xl font-extrabold">Päringud</div><div class="text-sm text-white/45">Sisse logitud: Admin · demoandmed anonüümitud</div></div><div class="flex flex-wrap gap-2 text-sm"><span class="rounded-xl bg-cyan-300 px-4 py-2 font-bold text-slate-950">Päringud 2</span><span class="rounded-xl border border-white/10 px-4 py-2 text-white/70">Vastatud 8</span><span class="rounded-xl border border-white/10 px-4 py-2 text-white/70">Arhiiv 14</span></div></div><div class="mt-5 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]"><div class="admin-grid border-b border-white/10 px-4 py-3 text-xs font-bold uppercase tracking-wide text-white/40"><div>Klient</div><div>Kontakt</div><div>Aadress</div><div>Sõnum</div><div>AI staatus</div></div><div class="admin-grid border-b border-white/10 px-4 py-4 text-sm text-white/75"><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">ID #46</div></div><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">andmed peidetud</div></div><div>Hane 2a</div><div>Hinnapäring vannitoa ja siseviimistluse töödele. Lisatud fotod objekti olukorrast.</div><div><span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-200">Kohtumine: 14:30</span></div></div><div class="admin-grid px-4 py-4 text-sm text-white/75"><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">ID #42</div></div><div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">andmed peidetud</div></div><div>Tallinn</div><div>Põranda paigalduse päring. AI märgib töö mahuks keskmine ja soovitab küsida ruutmeetrid.</div><div><span class="rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-bold text-cyan-200">Vajab pakkumist</span></div></div></div></div></div>
-      <div class="mock-window mt-5"><div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div><div class="bg-slate-100 p-5 text-slate-950"><div class="rounded-3xl bg-white p-5 shadow-xl"><div class="flex items-center justify-between border-b border-slate-200 pb-4"><div><div class="text-xs font-bold uppercase tracking-wide text-slate-400">Automaatne follow-up</div><div class="mt-1 text-xl font-extrabold">Hinnapäring kinnitatud - kohtumine kokku lepitud</div></div><div class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">Saadetud</div></div><div class="mt-4 text-sm text-slate-500">Tamm Ehitus &lt;info@tammehitus.ee&gt; → klient@email.ee</div><div class="mt-5 leading-relaxed text-slate-700"><p>Tere!</p><p class="mt-3">Aitäh hinnapäringu eest. Oleme sinu päringu kätte saanud ja broneerisime kohtumise objekti ülevaatamiseks.</p><div class="mt-4 rounded-2xl bg-slate-950 p-4 text-white"><div class="text-xs font-bold uppercase tracking-wide text-cyan-200/70">Kokkulepitud kohtumisaeg</div><div class="mt-2 text-2xl font-extrabold">Hane 2a, Tallinn · kell 14:30</div></div><p class="mt-4">Kohtumisel vaatame töö mahu üle ja saadame pärast seda täpse hinnapakkumise.</p><p class="mt-4">Parimate soovidega<br>Tamm Ehitus</p></div></div></div></div>
-      <div class="mt-6 rounded-3xl border border-cyan-300/15 bg-cyan-300/10 p-5 md:p-6"><div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><div class="text-sm font-bold text-cyan-100/60">Näidisväljund</div><div class="mt-2 text-xl font-extrabold">"Klient esitas ehitusettevõttele hinnapäringu ja sai automaatse kinnituse"</div><p class="mt-2 text-sm leading-relaxed text-white/60">AI töövoog: vorm → admin-paneel → anonüümne andmevaade → kinnitusemail → kohtumise meeldetuletus.</p></div><a href="#kontakt" data-demo-close class="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-slate-950 transition hover:opacity-90">Soovin sellist</a></div></div>
-    </div>
-  </div>
-
-  <section id="protsess" class="py-28">
-    <div class="max-w-7xl mx-auto px-6"><div class="grid lg:grid-cols-3 gap-6">
-      <div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">01</div><h3 class="text-2xl font-semibold mb-4">Kaardistame eesmärgi</h3><p class="text-white/60 leading-relaxed">Vaatame, kas vaja on uut lehte, vana lehe parandust, SEO-d või automaatikat.</p></div>
-      <div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">02</div><h3 class="text-2xl font-semibold mb-4">Teen selge pakkumise</h3><p class="text-white/60 leading-relaxed">Saad hinna, töö mahu ja lihtsa plaani, mida täpselt valmis ehitame.</p></div>
-      <div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">03</div><h3 class="text-2xl font-semibold mb-4">Paneme töö live'i</h3><p class="text-white/60 leading-relaxed">Valmis lahendus avaldatakse, testitakse mobiilis ja vajadusel ühendatakse vormide või workflow'dega.</p></div>
-    </div></div>
-  </section>
-
-  <section id="kontakt" class="pb-28">
-    <div class="max-w-6xl mx-auto px-6"><div class="bg-white text-black rounded-[40px] p-12 md:p-20 text-center"><h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">Tahad paremat veebilehte või automaatikat?</h2><p class="text-black/70 text-lg mt-8 max-w-2xl mx-auto leading-relaxed">Kirjuta, mis sul praegu olemas on ja mida tahad saavutada. Vastame ideega, milline pakett sobib ja mis hinnaga alustada.</p><a href="mailto:info@flowsync.ee?subject=Soovin%20pakkumist" class="inline-block mt-10 bg-black text-white px-10 py-5 rounded-2xl font-semibold hover:scale-105 transition">Küsi pakkumist</a></div></div>
-  </section>
+  <section id="protsess" class="py-28"><div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-6"><div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">01</div><h3 class="text-2xl font-semibold mb-4">Kaardistame eesmärgi</h3><p class="text-white/60 leading-relaxed">Vaatame, kas vaja on uut lehte, vana lehe parandust, SEO-d või automaatikat.</p></div><div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">02</div><h3 class="text-2xl font-semibold mb-4">Teen selge pakkumise</h3><p class="text-white/60 leading-relaxed">Saad hinna, töö mahu ja lihtsa plaani.</p></div><div class="card rounded-3xl p-8"><div class="text-white/40 text-sm mb-6">03</div><h3 class="text-2xl font-semibold mb-4">Paneme töö live'i</h3><p class="text-white/60 leading-relaxed">Valmis lahendus avaldatakse ja testitakse mobiilis.</p></div></div></section>
+  <section id="kontakt" class="pb-28"><div class="max-w-6xl mx-auto px-6"><div class="bg-white text-black rounded-[40px] p-12 md:p-20 text-center"><h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">Tahad paremat veebilehte või automaatikat?</h2><p class="text-black/70 text-lg mt-8 max-w-2xl mx-auto leading-relaxed">Kirjuta, mis sul praegu olemas on ja mida tahad saavutada.</p><a href="mailto:info@flowsync.ee?subject=Soovin%20pakkumist" class="inline-block mt-10 bg-black text-white px-10 py-5 rounded-2xl font-semibold hover:scale-105 transition">Küsi pakkumist</a></div></div></section>
 
   <script>
-    const body = document.body;
-    const workflowDemo = document.getElementById('workflow-demo');
-    const demoTrigger = document.querySelector('[data-demo-trigger]');
-    const packageModal = document.getElementById('package-modal');
-    const packageTrigger = document.querySelector('[data-package-trigger]');
-    const seoBasePrice = 149;
-    const seoTotal = document.getElementById('seo-total');
-    const seoSelected = document.getElementById('seo-selected');
-    const seoRequestLink = document.getElementById('seo-request-link');
-    const addonInputs = Array.from(document.querySelectorAll('[data-addon]'));
-
-    function openModal(modal, trigger) {
-      const rect = trigger.getBoundingClientRect();
-      modal.style.setProperty('--origin-x', `${rect.left + rect.width / 2}px`);
-      modal.style.setProperty('--origin-y', `${rect.top + rect.height / 2}px`);
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      body.style.overflow = 'hidden';
-    }
-
-    function closeModal(modal) {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      if (!document.querySelector('.modal-backdrop.is-open')) body.style.overflow = '';
-    }
-
-    function updateSeoTotal() {
-      const selected = addonInputs.filter((input) => input.checked);
-      const addonTotal = selected.reduce((sum, input) => sum + Number(input.value), 0);
-      const names = selected.map((input) => input.dataset.name);
-      const total = seoBasePrice + addonTotal;
-      seoTotal.textContent = `€${total}`;
-      seoSelected.textContent = names.length ? `Valitud: ${names.join(', ')}.` : 'Lisavalikuid pole valitud.';
-      const bodyText = `Tere! Soovin SEO Start paketti. Kogusumma: €${total}. Lisavalikud: ${names.length ? names.join(', ') : 'lisavalikuid pole'}.`;
-      seoRequestLink.href = `mailto:info@flowsync.ee?subject=${encodeURIComponent('Soovin SEO Start paketti')}&body=${encodeURIComponent(bodyText)}`;
-    }
-
-    packageTrigger.addEventListener('click', (event) => openModal(packageModal, event.currentTarget));
-    demoTrigger.addEventListener('click', (event) => openModal(workflowDemo, event.currentTarget));
-    addonInputs.forEach((input) => input.addEventListener('change', updateSeoTotal));
-    updateSeoTotal();
-
-    document.querySelectorAll('[data-package-close]').forEach((button) => button.addEventListener('click', () => closeModal(packageModal)));
-    document.querySelectorAll('[data-demo-close]').forEach((button) => button.addEventListener('click', () => closeModal(workflowDemo)));
-
-    [packageModal, workflowDemo].forEach((modal) => {
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) closeModal(modal);
-      });
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-      if (packageModal.classList.contains('is-open')) closeModal(packageModal);
-      if (workflowDemo.classList.contains('is-open')) closeModal(workflowDemo);
-    });
+    const body=document.body,workflowDemo=document.getElementById('workflow-demo'),demoTrigger=document.querySelector('[data-demo-trigger]'),packageModal=document.getElementById('package-modal'),packageTrigger=document.querySelector('[data-package-trigger]'),seoTotal=document.getElementById('seo-total'),seoSelected=document.getElementById('seo-selected'),seoRequestLink=document.getElementById('seo-request-link'),seoOptions=document.getElementById('seo-options');
+    const seoAddons=[['Märksõnade süvaanalüüs',49,'Leiame otsingud, mille järgi kliendid sinu teenust otsivad.'],['3 SEO sisuteksti parandust',79,'Parandame kuni kolm olulist teenuse või avalehe tekstiplokki.'],['Kiiruse optimeerimine',69,'Piltide, laadimise ja tehnilise baasi korrastus kiirema lehe jaoks.'],['Google Business Profile põhi',59,'Sobib kohalikele ettevõtetele, kes tahavad Google Mapsis paremini välja paista.'],['Schema markup',49,'Lisame otsingumootoritele selgema ettevõtte ja teenuse struktuuri.'],['30 päeva SEO jälgimine',39,'Vaatame kuu jooksul, kas indeks ja esimesed signaalid liiguvad õigesti.']];
+    seoOptions.innerHTML=seoAddons.map(([name,price,desc])=>`<label class="flex cursor-pointer items-start justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition hover:bg-white/[0.07]"><span class="flex gap-3"><input type="checkbox" class="mt-1 h-5 w-5 accent-cyan-300" data-addon value="${price}" data-name="${name}"><span><span class="block font-semibold">${name}</span><span class="mt-1 block text-sm text-white/50">${desc}</span></span></span><span class="font-bold text-cyan-100">+€${price}</span></label>`).join('');
+    const addonInputs=Array.from(document.querySelectorAll('[data-addon]'));
+    function openModal(modal,trigger){const r=trigger.getBoundingClientRect();modal.style.setProperty('--origin-x',`${r.left+r.width/2}px`);modal.style.setProperty('--origin-y',`${r.top+r.height/2}px`);modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');body.style.overflow='hidden'}
+    function closeModal(modal){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');if(!document.querySelector('.modal-backdrop.is-open'))body.style.overflow=''}
+    function updateSeoTotal(){const selected=addonInputs.filter(i=>i.checked),names=selected.map(i=>i.dataset.name),total=149+selected.reduce((s,i)=>s+Number(i.value),0);seoTotal.textContent=`€${total}`;seoSelected.textContent=names.length?`Valitud: ${names.join(', ')}.`:'Lisavalikuid pole valitud.';seoRequestLink.href=`mailto:info@flowsync.ee?subject=${encodeURIComponent('Soovin SEO Start paketti')}&body=${encodeURIComponent(`Tere! Soovin SEO Start paketti. Kogusumma: €${total}. Lisavalikud: ${names.length?names.join(', '):'lisavalikuid pole'}.`)}`}
+    packageTrigger.addEventListener('click',e=>openModal(packageModal,e.currentTarget));demoTrigger.addEventListener('click',e=>openModal(workflowDemo,e.currentTarget));addonInputs.forEach(i=>i.addEventListener('change',updateSeoTotal));updateSeoTotal();document.querySelectorAll('[data-package-close]').forEach(b=>b.addEventListener('click',()=>closeModal(packageModal)));document.querySelectorAll('[data-demo-close]').forEach(b=>b.addEventListener('click',()=>closeModal(workflowDemo)));[packageModal,workflowDemo].forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m)}));document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(packageModal.classList.contains('is-open'))closeModal(packageModal);if(workflowDemo.classList.contains('is-open'))closeModal(workflowDemo)}});
   </script>
 </body>
 </html>
