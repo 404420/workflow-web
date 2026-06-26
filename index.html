@@ -46,6 +46,8 @@
     }
 
     .demo-panel {
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
       opacity: 0;
       transform: translateY(18px) scale(0.9);
       transform-origin: var(--origin-x, 50%) var(--origin-y, 50%);
@@ -55,6 +57,55 @@
     .demo-backdrop.is-open .demo-panel {
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+
+    .mock-window {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(13, 22, 42, 0.98), rgba(4, 8, 17, 0.98));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .mock-titlebar {
+      display: flex;
+      gap: 6px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .mock-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.28);
+    }
+
+    .field-line {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.5);
+      padding: 14px 16px;
+      font-size: 13px;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr 0.7fr 1.4fr 0.9fr;
+      gap: 12px;
+      align-items: center;
+      min-width: 760px;
+    }
+
+    .blurred-data {
+      display: inline-block;
+      min-width: 86px;
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(226, 232, 240, 0.22);
+      filter: blur(3px);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -295,48 +346,143 @@
     </div>
   </section>
 
-  <div id="workflow-demo" class="demo-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/70 px-4 py-8 backdrop-blur-md" aria-hidden="true">
-    <div class="demo-panel w-full max-w-3xl rounded-[28px] border border-white/10 bg-[#090909] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-labelledby="workflow-demo-title">
+  <div id="workflow-demo" class="demo-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/75 px-4 py-6 backdrop-blur-md" aria-hidden="true">
+    <div class="demo-panel w-full max-w-6xl rounded-[28px] border border-white/10 bg-[#050913] p-5 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-labelledby="workflow-demo-title">
       <div class="flex items-start justify-between gap-6">
         <div>
-          <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/60">Demo workflow</div>
-          <h2 id="workflow-demo-title" class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">Päringust automaatse follow-up'ini</h2>
-          <p class="mt-3 max-w-2xl text-white/60">Näide süsteemist, kus uus kliendipäring liigub ise õigesse kohta, saab prioriteedi ja käivitab personaalse vastuse.</p>
+          <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100">AI workflow demo</div>
+          <h2 id="workflow-demo-title" class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">Päringust admin-paneeli ja automaatse emailini</h2>
+          <p class="mt-3 max-w-3xl text-white/60">Näide ehitusettevõtte töövoost: klient saadab hinnapäringu, päring jõuab admin-paneeli, AI märgib töö tüübi ning klient saab automaatse kinnituse kokkulepitud kohtumisajaga.</p>
         </div>
         <button type="button" data-demo-close class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-xl leading-none text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Sulge demo">×</button>
       </div>
 
       <div class="mt-8 grid gap-4 md:grid-cols-4">
         <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-          <div class="text-sm text-white/45">01</div>
-          <div class="mt-3 font-bold">Uus päring</div>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">Kontaktivormist tuleb nimi, email, teenuse soov ja sõnum.</p>
+          <div class="text-sm text-cyan-100/45">01</div>
+          <div class="mt-3 font-bold">Klient saadab päringu</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Vormist tulevad nimi, kontakt, aadress, sõnum ja failid.</p>
         </div>
         <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-          <div class="text-sm text-white/45">02</div>
-          <div class="mt-3 font-bold">AI sorteerib</div>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">AI hindab, kas teema on SEO, veebiuuendus või workflow.</p>
+          <div class="text-sm text-cyan-100/45">02</div>
+          <div class="mt-3 font-bold">Admin näeb uut tööd</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Päring lisatakse tumedasse kliendipaneeli anonüümse vaatega.</p>
         </div>
         <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-          <div class="text-sm text-white/45">03</div>
-          <div class="mt-3 font-bold">CRM/tabel</div>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">Lead lisatakse Google Sheetsi, Notioni, Airtable'i või CRM-i.</p>
+          <div class="text-sm text-cyan-100/45">03</div>
+          <div class="mt-3 font-bold">AI teeb eeltöö</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">AI tuvastab töö tüübi, kiireloomulisuse ja järgmise sammu.</p>
         </div>
         <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-          <div class="text-sm text-white/45">04</div>
-          <div class="mt-3 font-bold">Follow-up</div>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">Kliendile saadetakse automaatne, tema päringu põhjal koostatud vastus.</p>
+          <div class="text-sm text-cyan-100/45">04</div>
+          <div class="mt-3 font-bold">Follow-up email</div>
+          <p class="mt-2 text-sm leading-relaxed text-white/55">Klient saab automaatse kinnituse ja kohtumise detailid.</p>
         </div>
       </div>
 
-      <div class="mt-6 rounded-3xl border border-white/10 bg-white text-black p-5 md:p-6">
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        <div class="mock-window">
+          <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+          <div class="p-6">
+            <div class="text-center text-xl font-extrabold tracking-wide">SAADA PÄRING</div>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="field-line">Nimi</div>
+              <div class="field-line">Email</div>
+              <div class="field-line">Telefon</div>
+              <div class="field-line">Aadress</div>
+            </div>
+            <div class="field-line mt-3 h-28">Kirjelda oma projekti...</div>
+            <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+              <div class="rounded-xl bg-orange-500 px-12 py-3 text-center text-sm font-bold text-white">SAADA SÕNUM</div>
+              <div class="rounded-xl border-2 border-white/80 px-8 py-3 text-center text-sm font-bold text-white">VALI FAILID</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mock-window">
+          <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+          <div class="grid min-h-[310px] place-items-center bg-slate-950 p-6">
+            <div class="w-full max-w-sm rounded-3xl border border-white/10 bg-white/[0.06] p-7 shadow-2xl">
+              <div class="text-center text-2xl font-extrabold">Admin login</div>
+              <div class="field-line mt-6">kasutaja</div>
+              <div class="field-line mt-3">••••••••••••••••</div>
+              <div class="mt-5 rounded-xl bg-white px-5 py-3 text-center text-sm font-bold text-slate-950">Logi sisse</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-window mt-5">
+        <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+        <div class="bg-[#07101f] p-5">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div class="text-2xl font-extrabold">Päringud</div>
+              <div class="text-sm text-white/45">Sisse logitud: Admin · demoandmed anonüümitud</div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="rounded-xl bg-cyan-300 px-4 py-2 font-bold text-slate-950">Päringud 2</span>
+              <span class="rounded-xl border border-white/10 px-4 py-2 text-white/70">Vastatud 8</span>
+              <span class="rounded-xl border border-white/10 px-4 py-2 text-white/70">Arhiiv 14</span>
+            </div>
+          </div>
+
+          <div class="mt-5 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]">
+            <div class="admin-grid border-b border-white/10 px-4 py-3 text-xs font-bold uppercase tracking-wide text-white/40">
+              <div>Klient</div><div>Kontakt</div><div>Aadress</div><div>Sõnum</div><div>AI staatus</div>
+            </div>
+            <div class="admin-grid border-b border-white/10 px-4 py-4 text-sm text-white/75">
+              <div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">ID #46</div></div>
+              <div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">andmed peidetud</div></div>
+              <div>Hane 2a</div>
+              <div>Hinnapäring vannitoa ja siseviimistluse töödele. Lisatud fotod objekti olukorrast.</div>
+              <div><span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-200">Kohtumine: 14:30</span></div>
+            </div>
+            <div class="admin-grid px-4 py-4 text-sm text-white/75">
+              <div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">ID #42</div></div>
+              <div><span class="blurred-data"></span><div class="mt-2 text-xs text-white/35">andmed peidetud</div></div>
+              <div>Tallinn</div>
+              <div>Põranda paigalduse päring. AI märgib töö mahuks keskmine ja soovitab küsida ruutmeetrid.</div>
+              <div><span class="rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-bold text-cyan-200">Vajab pakkumist</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-window mt-5">
+        <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+        <div class="bg-slate-100 p-5 text-slate-950">
+          <div class="rounded-3xl bg-white p-5 shadow-xl">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wide text-slate-400">Automaatne follow-up</div>
+                <div class="mt-1 text-xl font-extrabold">Hinnapäring kinnitatud - kohtumine kokku lepitud</div>
+              </div>
+              <div class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">Saadetud</div>
+            </div>
+            <div class="mt-4 text-sm text-slate-500">Tamm Ehitus &lt;info@tammehitus.ee&gt; → klient@email.ee</div>
+            <div class="mt-5 leading-relaxed text-slate-700">
+              <p>Tere!</p>
+              <p class="mt-3">Aitäh hinnapäringu eest. Oleme sinu päringu kätte saanud ja broneerisime kohtumise objekti ülevaatamiseks.</p>
+              <div class="mt-4 rounded-2xl bg-slate-950 p-4 text-white">
+                <div class="text-xs font-bold uppercase tracking-wide text-cyan-200/70">Kokkulepitud kohtumisaeg</div>
+                <div class="mt-2 text-2xl font-extrabold">Hane 2a, Tallinn · kell 14:30</div>
+              </div>
+              <p class="mt-4">Kohtumisel vaatame töö mahu üle ja saadame pärast seda täpse hinnapakkumise.</p>
+              <p class="mt-4">Parimate soovidega<br>Tamm Ehitus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-3xl border border-cyan-300/15 bg-cyan-300/10 p-5 md:p-6">
         <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <div class="text-sm font-bold text-black/50">Näidisväljund</div>
-            <div class="mt-2 text-xl font-extrabold">"Klient soovib olemasoleva lehe uuendust + SEO põhja"</div>
-            <p class="mt-2 text-sm leading-relaxed text-black/60">Prioriteet: keskmine · Pakett: Veebiuuendus €249+ · Järgmine samm: küsi ligipääs ja praeguse lehe URL.</p>
+            <div class="text-sm font-bold text-cyan-100/60">Näidisväljund</div>
+            <div class="mt-2 text-xl font-extrabold">"Klient esitas ehitusettevõttele hinnapäringu ja sai automaatse kinnituse"</div>
+            <p class="mt-2 text-sm leading-relaxed text-white/60">AI töövoog: vorm → admin-paneel → anonüümne andmevaade → kinnitusemail → kohtumise meeldetuletus.</p>
           </div>
-          <a href="#kontakt" data-demo-close class="rounded-2xl bg-black px-6 py-4 text-center font-semibold text-white transition hover:opacity-90">Soovin sellist</a>
+          <a href="#kontakt" data-demo-close class="rounded-2xl bg-white px-6 py-4 text-center font-semibold text-slate-950 transition hover:opacity-90">Soovin sellist</a>
         </div>
       </div>
     </div>
