@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowSync - Logi sisse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: Inter, sans-serif; background: #050505; }
+    .glow { background: radial-gradient(circle at 50% 20%, rgba(255,255,255,.14), transparent 42%); }
+  </style>
+</head>
+<body class="min-h-screen text-white">
+  <div class="fixed inset-0 glow"></div>
+  <main class="relative z-10 grid min-h-screen place-items-center px-5 py-10">
+    <section class="w-full max-w-md rounded-[32px] border border-white/10 bg-white/[0.045] p-6 shadow-2xl backdrop-blur-2xl md:p-8">
+      <a href="../" class="block text-center text-3xl font-extrabold tracking-tight">FlowSync</a>
+      <p class="mt-3 text-center text-sm leading-relaxed text-white/50">Logi sisse, et hallata päringuid, pakette ja AI workflow demosid.</p>
+
+      <form class="mt-8 space-y-4">
+        <label class="block">
+          <span class="text-sm font-semibold text-white/70">Email</span>
+          <input type="email" placeholder="sinu@email.ee" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-semibold text-white/70">Salasõna</span>
+          <input type="password" placeholder="••••••••••••" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
+        </label>
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 text-white/55"><input type="checkbox" class="h-4 w-4 accent-white" /> Jäta mind meelde</label>
+          <a href="#" class="font-semibold text-white transition hover:text-white/70">Unustasid salasõna?</a>
+        </div>
+        <button type="button" class="w-full rounded-2xl bg-white px-5 py-4 font-bold text-black transition hover:scale-[1.02]">Logi sisse</button>
+      </form>
+
+      <div class="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/50">Demo vaade. Päris autentimise saab ühendada hiljem Supabase, Firebase või custom backendiga.</div>
+      <p class="mt-6 text-center text-sm text-white/50">Kontot pole? <a href="../register/" class="font-semibold text-white hover:text-white/70">Registreeri</a></p>
+    </section>
+  </main>
+</body>
+</html>
