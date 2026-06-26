@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlowSync - Logi sisse</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -19,25 +20,71 @@
       <a href="../" class="block text-center text-3xl font-extrabold tracking-tight">FlowSync</a>
       <p class="mt-3 text-center text-sm leading-relaxed text-white/50">Logi sisse, et hallata päringuid, pakette ja AI workflow demosid.</p>
 
-      <form class="mt-8 space-y-4">
+      <form id="login-form" class="mt-8 space-y-4">
         <label class="block">
           <span class="text-sm font-semibold text-white/70">Email</span>
-          <input type="email" placeholder="sinu@email.ee" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
+          <input id="email" type="email" autocomplete="email" required placeholder="sinu@email.ee" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
         </label>
         <label class="block">
           <span class="text-sm font-semibold text-white/70">Salasõna</span>
-          <input type="password" placeholder="••••••••••••" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
+          <input id="password" type="password" autocomplete="current-password" required placeholder="••••••••••••" class="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-white/35" />
         </label>
         <div class="flex items-center justify-between text-sm">
           <label class="flex items-center gap-2 text-white/55"><input type="checkbox" class="h-4 w-4 accent-white" /> Jäta mind meelde</label>
-          <a href="#" class="font-semibold text-white transition hover:text-white/70">Unustasid salasõna?</a>
+          <button id="forgot-password" type="button" class="font-semibold text-white transition hover:text-white/70">Unustasid salasõna?</button>
         </div>
-        <button type="button" class="w-full rounded-2xl bg-white px-5 py-4 font-bold text-black transition hover:scale-[1.02]">Logi sisse</button>
+        <button id="login-button" type="submit" class="w-full rounded-2xl bg-white px-5 py-4 font-bold text-black transition hover:scale-[1.02]">Logi sisse</button>
       </form>
 
-      <div class="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/50">Demo vaade. Päris autentimise saab ühendada hiljem Supabase, Firebase või custom backendiga.</div>
+      <div id="auth-message" class="mt-6 hidden rounded-2xl border p-4 text-sm"></div>
       <p class="mt-6 text-center text-sm text-white/50">Kontot pole? <a href="../register/" class="font-semibold text-white hover:text-white/70">Registreeri</a></p>
     </section>
   </main>
+
+  <script>
+    const SUPABASE_URL = 'https://ibzwvcjtbiksvacraglv.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_IzI8q6zNgA6yzbgpr0b0Dg_rESAMlfX';
+    const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('auth-message');
+    const loginButton = document.getElementById('login-button');
+    const forgotButton = document.getElementById('forgot-password');
+
+    function showMessage(text, type = 'info') {
+      message.textContent = text;
+      message.className = `mt-6 rounded-2xl border p-4 text-sm ${type === 'error' ? 'border-red-400/30 bg-red-400/10 text-red-100' : 'border-white/10 bg-white/10 text-white/70'}`;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      loginButton.disabled = true;
+      loginButton.textContent = 'Sisenen...';
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const { error } = await client.auth.signInWithPassword({ email, password });
+      if (error) {
+        showMessage(error.message, 'error');
+        loginButton.disabled = false;
+        loginButton.textContent = 'Logi sisse';
+        return;
+      }
+      showMessage('Sisselogimine õnnestus. Suunan edasi...');
+      window.location.href = '../dashboard/';
+    });
+
+    forgotButton.addEventListener('click', async () => {
+      const email = document.getElementById('email').value.trim();
+      if (!email) {
+        showMessage('Sisesta enne email, kuhu salasõna taastamise link saata.', 'error');
+        return;
+      }
+      const { error } = await client.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/workflow-web/login/` });
+      if (error) {
+        showMessage(error.message, 'error');
+        return;
+      }
+      showMessage('Taastamise link saadeti emailile. Kontrolli postkasti.');
+    });
+  </script>
 </body>
 </html>
